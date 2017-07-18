@@ -1,0 +1,3 @@
+epresse_homepage:
+    path:     /
+    defaults: { _controller: EpresseBundle:Default:index }

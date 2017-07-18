@@ -1,7 +1,12 @@
-nano_epress:
-    resource: "@NanoEpressBundle/Controller/"
-    type:     annotation
+utilisateurs:
+    resource: "@UtilisateursBundle/Resources/config/routing.yml"
     prefix:   /
+
+epresse:
+    resource: "@EpresseBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
 
 app:
     resource: '@AppBundle/Controller/'
