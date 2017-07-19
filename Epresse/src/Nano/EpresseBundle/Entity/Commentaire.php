@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="commentaire")
  * @ORM\Entity(repositoryClass="Nano\EpresseBundle\Repository\CommentaireRepository")
  */
-class Commentaire
-{
+class Commentaire {
+
     /**
      * @var int
      *
@@ -35,14 +35,24 @@ class Commentaire
      */
     private $dateAdd;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Nano\EpresseBundle\Entity\Abonne", inversedBy="commentaire")
+     * @ORM\JoinColumn(name="abonne", referencedColumnName="id",nullable=false)
+     */
+    private $abonne;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Nano\EpresseBundle\Entity\Article", inversedBy="commentaire")
+     * @ORM\JoinColumn(name="article", referencedColumnName="id")
+     */
+    private $article;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -53,8 +63,7 @@ class Commentaire
      *
      * @return Commentaire
      */
-    public function setCommentaire($commentaire)
-    {
+    public function setCommentaire($commentaire) {
         $this->commentaire = $commentaire;
 
         return $this;
@@ -65,8 +74,7 @@ class Commentaire
      *
      * @return string
      */
-    public function getCommentaire()
-    {
+    public function getCommentaire() {
         return $this->commentaire;
     }
 
@@ -77,8 +85,7 @@ class Commentaire
      *
      * @return Commentaire
      */
-    public function setDateAdd($dateAdd)
-    {
+    public function setDateAdd($dateAdd) {
         $this->dateAdd = $dateAdd;
 
         return $this;
@@ -89,9 +96,8 @@ class Commentaire
      *
      * @return \DateTime
      */
-    public function getDateAdd()
-    {
+    public function getDateAdd() {
         return $this->dateAdd;
     }
-}
 
+}

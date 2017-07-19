@@ -63,6 +63,17 @@ class Offre
      */
     private $dateAdd;
 
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Nano\EpresseBundle\Entity\Abonne", mappedBy="offre")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $abonne;
+    
+     /**
+     * @ORM\ManyToMany(targetEntity="Nano\EpresseBundle\Entity\Presse", inversedBy="offre")
+     */
+    private $presse;
 
     /**
      * Get id

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tag")
  * @ORM\Entity(repositoryClass="Nano\EpresseBundle\Repository\TagRepository")
  */
-class Tag
-{
+class Tag {
+
     /**
      * @var int
      *
@@ -35,14 +35,18 @@ class Tag
      */
     private $dateAdd;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Nano\EpresseBundle\Entity\Abonne", mappedBy="tag")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $abonne;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -53,8 +57,7 @@ class Tag
      *
      * @return Tag
      */
-    public function setTag($tag)
-    {
+    public function setTag($tag) {
         $this->tag = $tag;
 
         return $this;
@@ -65,8 +68,7 @@ class Tag
      *
      * @return string
      */
-    public function getTag()
-    {
+    public function getTag() {
         return $this->tag;
     }
 
@@ -77,8 +79,7 @@ class Tag
      *
      * @return Tag
      */
-    public function setDateAdd($dateAdd)
-    {
+    public function setDateAdd($dateAdd) {
         $this->dateAdd = $dateAdd;
 
         return $this;
@@ -89,9 +90,8 @@ class Tag
      *
      * @return \DateTime
      */
-    public function getDateAdd()
-    {
+    public function getDateAdd() {
         return $this->dateAdd;
     }
-}
 
+}

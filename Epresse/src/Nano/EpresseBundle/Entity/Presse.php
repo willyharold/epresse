@@ -41,7 +41,19 @@ class Presse
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+    
+     /**
+     * @ORM\ManyToMany(targetEntity="Nano\EpresseBundle\Entity\Abonne", mappedBy="presse")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $abonne;
 
+    
+     /**
+     * @ORM\ManyToMany(targetEntity="Nano\EpresseBundle\Entity\Offre", mappedBy="presse")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $offre;
 
     /**
      * Get id

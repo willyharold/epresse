@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="Nano\EpresseBundle\Repository\ArticleRepository")
  */
-class Article
-{
+class Article {
+
     /**
      * @var int
      *
@@ -56,14 +56,23 @@ class Article
      */
     private $coordY;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Nano\EpresseBundle\Entity\Commentaire", mappedBy="commentaire")
+     */
+    private $commentaire;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Nano\EpresseBundle\Entity\Parution", cascade={"persist","remove"})
+     * @ORM\JoinColumn(name="parution", referencedColumnName="id",nullable=false)
+     */
+    private $parution;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -74,8 +83,7 @@ class Article
      *
      * @return Article
      */
-    public function setTitre($titre)
-    {
+    public function setTitre($titre) {
         $this->titre = $titre;
 
         return $this;
@@ -86,8 +94,7 @@ class Article
      *
      * @return string
      */
-    public function getTitre()
-    {
+    public function getTitre() {
         return $this->titre;
     }
 
@@ -98,8 +105,7 @@ class Article
      *
      * @return Article
      */
-    public function setAuteur($auteur)
-    {
+    public function setAuteur($auteur) {
         $this->auteur = $auteur;
 
         return $this;
@@ -110,8 +116,7 @@ class Article
      *
      * @return string
      */
-    public function getAuteur()
-    {
+    public function getAuteur() {
         return $this->auteur;
     }
 
@@ -122,8 +127,7 @@ class Article
      *
      * @return Article
      */
-    public function setPage($page)
-    {
+    public function setPage($page) {
         $this->page = $page;
 
         return $this;
@@ -134,8 +138,7 @@ class Article
      *
      * @return string
      */
-    public function getPage()
-    {
+    public function getPage() {
         return $this->page;
     }
 
@@ -146,8 +149,7 @@ class Article
      *
      * @return Article
      */
-    public function setCoordX($coordX)
-    {
+    public function setCoordX($coordX) {
         $this->coordX = $coordX;
 
         return $this;
@@ -158,8 +160,7 @@ class Article
      *
      * @return string
      */
-    public function getCoordX()
-    {
+    public function getCoordX() {
         return $this->coordX;
     }
 
@@ -170,8 +171,7 @@ class Article
      *
      * @return Article
      */
-    public function setCoordY($coordY)
-    {
+    public function setCoordY($coordY) {
         $this->coordY = $coordY;
 
         return $this;
@@ -182,9 +182,8 @@ class Article
      *
      * @return string
      */
-    public function getCoordY()
-    {
+    public function getCoordY() {
         return $this->coordY;
     }
-}
 
+}

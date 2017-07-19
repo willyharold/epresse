@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="abonne")
  * @ORM\Entity(repositoryClass="Nano\EpresseBundle\Repository\AbonneRepository")
  */
-class Abonne
-{
+class Abonne {
+
     /**
      * @var int
      *
@@ -49,14 +49,39 @@ class Abonne
      */
     private $google;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Nano\EpresseBundle\Entity\Peripherique", mappedBy="peripherique")
+     */
+    private $peripherique;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Nano\EpresseBundle\Entity\Commentaire", mappedBy="commentaire")
+     */
+    private $commentaire;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Nano\EpresseBundle\Entity\Tag", inversedBy="abonne")
+     */
+    private $tag;
+    
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Nano\EpresseBundle\Entity\Offre", inversedBy="abonne")
+     */
+    private $offre;
+    
+     /**
+     * @ORM\ManyToMany(targetEntity="Nano\EpresseBundle\Entity\Presse", inversedBy="abonne")
+     */
+    private $presse;
+
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -67,8 +92,7 @@ class Abonne
      *
      * @return Abonne
      */
-    public function setDatenaiss($datenaiss)
-    {
+    public function setDatenaiss($datenaiss) {
         $this->datenaiss = $datenaiss;
 
         return $this;
@@ -79,8 +103,7 @@ class Abonne
      *
      * @return \DateTime
      */
-    public function getDatenaiss()
-    {
+    public function getDatenaiss() {
         return $this->datenaiss;
     }
 
@@ -91,8 +114,7 @@ class Abonne
      *
      * @return Abonne
      */
-    public function setFb($fb)
-    {
+    public function setFb($fb) {
         $this->fb = $fb;
 
         return $this;
@@ -103,8 +125,7 @@ class Abonne
      *
      * @return string
      */
-    public function getFb()
-    {
+    public function getFb() {
         return $this->fb;
     }
 
@@ -115,8 +136,7 @@ class Abonne
      *
      * @return Abonne
      */
-    public function setTwitter($twitter)
-    {
+    public function setTwitter($twitter) {
         $this->twitter = $twitter;
 
         return $this;
@@ -127,8 +147,7 @@ class Abonne
      *
      * @return string
      */
-    public function getTwitter()
-    {
+    public function getTwitter() {
         return $this->twitter;
     }
 
@@ -139,8 +158,7 @@ class Abonne
      *
      * @return Abonne
      */
-    public function setGoogle($google)
-    {
+    public function setGoogle($google) {
         $this->google = $google;
 
         return $this;
@@ -151,9 +169,8 @@ class Abonne
      *
      * @return string
      */
-    public function getGoogle()
-    {
+    public function getGoogle() {
         return $this->google;
     }
-}
 
+}

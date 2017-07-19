@@ -56,6 +56,11 @@ class Peripherique
      */
     private $lastUse;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Nano\EpresseBundle\Entity\Abonne", inversedBy="peripherique")
+     * @ORM\JoinColumn(name="abonne", referencedColumnName="id", nullable=false)
+     */
+    private $abonne;
 
     /**
      * Get id
